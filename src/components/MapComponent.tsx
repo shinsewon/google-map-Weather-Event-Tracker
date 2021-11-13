@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import GoogleMapReact from 'google-map-react';
 import useSuperCluster from 'use-supercluster';
 import { PointFeature } from 'supercluster';
-import { BBox, GeoJsonProperties } from 'geojson';
+import { BBox } from 'geojson';
 import LocationMarker from './LocationMarker';
 import LocationInfoBox from './LocationInfoBox';
 import { useMainContext } from '../context/context';
@@ -85,9 +85,6 @@ function MapComponent({ center, eventData }: MapProps) {
     15: 'Sea and Lake Ice',
   };
 
-  // Create an Array of its keys
-  // let eventDataIndexNum: string[] | number[] = Object.keys(eventDataIndex);
-  // eventDataIndexNum = eventDataIndexNum.map((idx) => Number(idx));
   const eventDataIndexNum: number[] = Object.keys(eventDataIndex).map((idx) =>
     Number(idx),
   );
@@ -151,18 +148,14 @@ function MapComponent({ center, eventData }: MapProps) {
             bounds.nw.lat,
           ]);
         }}
-        // onClick={() => setLocationInfo(null)}
-        // onDrag={() => setLocationInfo(null)}
       >
         {clusters.map((cluster) => {
           const [longitude, latitude] = cluster.geometry.coordinates;
           const { cluster: isCluster, point_count: pointCount } =
             cluster.properties;
-          // Used for icon type
           const clusterId = cluster.properties.eventType; // 제대로뜸
           if (isCluster) {
             const changeSize = Math.round((pointCount / points.length) * 100);
-            // Can't exceed 40 px
             const addSize = Math.min(changeSize * 10, 40);
 
             return (
@@ -183,7 +176,7 @@ function MapComponent({ center, eventData }: MapProps) {
                     );
 
                     mapRefCurrent.setZoom(expansionZoom);
-                    mapRefCurrent.panTo({ lat: latitude, lng: longitude }); // 지도의 중심을 지정된으로 변경합니다 LatLng. 변경 사항이 맵의 너비와 높이보다 작 으면 전환이 부드럽게 애니메이션됩니다.
+                    mapRefCurrent.panTo({ lat: latitude, lng: longitude }); // 지도의 중심을 지정된으로 변경합니다 LatLng. 변경 사항이 맵의 너비와 높이보다 작 으면 전환이 부드럽게 애니메이션된다.
                   }}
                 >
                   {pointCount}

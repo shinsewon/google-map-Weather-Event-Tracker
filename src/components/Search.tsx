@@ -13,7 +13,6 @@ function Search() {
   const [storeSelection, setStoreSelection] = useState<string>('All');
 
   const filterEventData = (eventData: any[]) => {
-    // 스프레드 연산자로 참조 데이터를 덮어 쓰지 않습니다.
     let filteredEventData = [...eventData];
     if (storeSelection !== 'All') {
       filteredEventData = filteredEventData.filter(
@@ -48,7 +47,7 @@ function Search() {
   };
 
   useEffect(() => {
-    // 필터 옵션을 변경했습니다. 마커도 변경되기를 원합니다.
+    // 필터 옵션,마커 변경.
     const filteredEventData = filterEventData(eventData);
     // console.log('filteredEventData>>>>>>',filteredEventData)
     setReRenderMarkers(filteredEventData);
@@ -78,7 +77,7 @@ function Search() {
         </select>
       </section>
       <section className="search-container">
-        <p>Search:</p>
+        <p>검색:</p>
         <input
           type="text"
           ref={searchBox}
@@ -96,9 +95,9 @@ function Search() {
       <table className="search-table">
         <tbody>
           <tr>
-            <th style={{ width: '60%' }}>Title</th>
-            <th>Type</th>
-            <th>Location</th>
+            <th style={{ width: '60%' }}>제목</th>
+            <th>타입</th>
+            <th>장소</th>
           </tr>
           {matchEvent.map((ev) => {
             return (
@@ -107,14 +106,13 @@ function Search() {
                 <td>{ev.categories[0].title}</td>
                 {ev.categories[0].title ? (
                   <td>
-                    클릭
                     <a
                       href="/#"
                       onClick={() => {
                         setSelectedEvent(ev);
                       }}
                     >
-                      Click Here
+                      클릭
                     </a>
                   </td>
                 ) : (
