@@ -6,9 +6,9 @@
 <div>
 <img src="https://user-images.githubusercontent.com/68217675/141643964-0536caa6-ad98-41ff-a7df-ad3ae305945f.gif" width="100%"></img>
 </div>
-<!-- <div>
-<img src="https://user-images.githubusercontent.com/68217675/104121069-f5d08400-537e-11eb-99a8-0f1d3616db5b.gif" width="800"></img>
-</div> -->
+<div>
+<img src="https://user-images.githubusercontent.com/68217675/141644070-8e7acbfa-b763-44ce-9bef-d266bdedec58.gif" width="100%"></img>
+</div>
 
 
 In the project directory, you can run:
